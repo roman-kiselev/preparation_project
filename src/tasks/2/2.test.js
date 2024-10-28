@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Задача №2
  *  @description Тесты для задачи №2.
@@ -16,16 +17,9 @@
  * @example
  * hammingDistance('1010', '1111') // 2
  */
-
-import { hammingDistance } from "./2.decision";
-
-interface IDataForTests {
-    str1: string;
-    str2: string;
-    expected: number | string;
-}
-
-const dataForTests: IDataForTests[] = [
+Object.defineProperty(exports, "__esModule", { value: true });
+var _2_decision_1 = require("./2.decision");
+var dataForTests = [
     { str1: "Hello", str2: "Hallo", expected: 1 },
     {
         str1: "Hello",
@@ -39,11 +33,11 @@ const dataForTests: IDataForTests[] = [
     },
     { str1: "1010", str2: "1111", expected: 2 },
 ];
-
-describe("hammingDistance", () => {
-    dataForTests.forEach(({ str1, str2, expected }, index) => {
-        test(`Проверка случая ${index + 1}`, () => {
-            expect(hammingDistance(str1, str2)).toBe(expected);
+describe("hammingDistance", function () {
+    dataForTests.forEach(function (_a, index) {
+        var str1 = _a.str1, str2 = _a.str2, expected = _a.expected;
+        test("\u041F\u0440\u043E\u0432\u0435\u0440\u043A\u0430 \u0441\u043B\u0443\u0447\u0430\u044F ".concat(index + 1), function () {
+            expect((0, _2_decision_1.hammingDistance)(str1, str2)).toBe(expected);
         });
     });
 });
