@@ -28,9 +28,11 @@ export function calculateCoins(amount: number) {
             amount -= 1;
         }
     }
-    const result = Object.entries(coins).filter(([, value]) => value > 0);
-    const resultTwo = new Map(result).entries();
-    return resultTwo;
-}
+    const result = Object.entries(coins)
+        .filter(([, value]) => value > 0)
+        .map(([key, value]) => {
+            return { [`${key}`]: value };
+        });
 
-console.log(calculateCoins(123));
+    return Object.assign({}, ...result);
+}
