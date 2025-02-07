@@ -5,10 +5,27 @@
  * Код для решения задачи:
  */
 
-type arrT = (number | boolean | string)[];
+export type arrT = (number | boolean | string)[];
 
-export function moveZeros(arr: arrT): arrT {
-    let min = 0;
-    let max = arr.length - 1;
-    let mid = Math.floor(max / 2);
+// Короткая запись. Сложность O(2n)
+export function moveZerosTwo(arr: arrT): arrT {
+    return arr
+        .filter((item) => item !== 0)
+        .concat(arr.filter((item) => item === 0));
+}
+
+// Эффективный способ, так как выполняется за один проход
+// При этом длинна масива не меняется, не создаётся новый массив
+// О(n)
+export function moveZerosThree(arr: arrT): arrT {
+    let helpIndex = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== 0) {
+            [arr[i], arr[helpIndex]] = [arr[helpIndex], arr[i]];
+            helpIndex++;
+        }
+    }
+
+    return arr;
 }
